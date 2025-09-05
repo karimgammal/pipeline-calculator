@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             background: white;
             border-radius: 16px;
@@ -45,11 +45,48 @@
             opacity: 0.9;
         }
 
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #2c3e50;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .tab-button:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         .dashboard {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
-            padding: 30px;
+            margin-bottom: 40px;
         }
 
         .card {
@@ -58,12 +95,6 @@
             padding: 25px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border: 1px solid #e1e8ed;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .card-title {
@@ -101,24 +132,64 @@
             border-color: #667eea;
         }
 
-        .metric {
-            background: #f8f9fa;
-            padding: 15px;
+        .explanation-box {
+            background: #f8f9fc;
+            border: 1px solid #e1e8ed;
             border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
         }
 
-        .metric-label {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 5px;
+        .explanation-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .formula {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .metric-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
         }
 
         .metric-value {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #2c3e50;
+            font-size: 2em;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .metric-explanation {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
         }
 
         .status-indicator {
@@ -129,79 +200,78 @@
             margin-left: 10px;
         }
 
-        .status-green { background-color: #27ae60; }
-        .status-yellow { background-color: #f39c12; }
-        .status-red { background-color: #e74c3c; }
-
-        .risk-matrix {
-            grid-column: 1 / -1;
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 30px;
+        .status-green { 
+            background-color: #27ae60; 
+            box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+        }
+        
+        .status-yellow { 
+            background-color: #f39c12; 
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+        }
+        
+        .status-red { 
+            background-color: #e74c3c; 
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
         }
 
-        .risk-grid {
+        .ae-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
-        .risk-item {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .recommendations {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        .ae-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 25px;
             border-radius: 12px;
-            padding: 30px;
         }
 
-        .rec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .rec-card {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .rec-title {
+        .ae-name {
+            font-size: 1.3em;
             font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.1em;
+            margin-bottom: 15px;
         }
 
-        .big-number {
-            font-size: 2.5em;
-            font-weight: 700;
-            text-align: center;
+        .ae-metric {
+            display: flex;
+            justify-content: space-between;
             margin: 10px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
-        .coverage-visual {
-            height: 20px;
-            background: #e1e8ed;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 10px 0;
+        .simple-explanation {
+            background: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
         }
 
-        .coverage-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);
-            border-radius: 10px;
-            transition: width 0.5s ease;
+        .warning-explanation {
+            background: #fff3e0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .danger-explanation {
+            background: #ffebee;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .breakdown-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
         }
 
         @media (max-width: 768px) {
@@ -210,6 +280,10 @@
                 gap: 20px;
                 padding: 20px;
             }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -217,187 +291,436 @@
     <div class="container">
         <div class="header">
             <h1>Pipeline Coverage Calculator</h1>
-            <p>Series A Startup - Revenue Operations Dashboard</p>
+            <p>Easy-to-Understand Revenue Planning for Everyone</p>
+            <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+                <span>📚 Learn • 🧮 Calculate • 🎯 Plan</span>
+            </div>
         </div>
 
-        <div class="dashboard">
-            <!-- INPUTS SECTION -->
-            <div class="card">
-                <div class="card-title">📊 Revenue Targets & Capacity</div>
-                
-                <div class="input-group">
-                    <label for="arrGoal">ARR Goal ($)</label>
-                    <input type="number" id="arrGoal" value="5000000" oninput="calculate()">
-                </div>
+        <div class="nav-tabs">
+            <button class="tab-button active" onclick="showTab('inputs')">📝 Setup & Inputs</button>
+            <button class="tab-button" onclick="showTab('calculations')">🧮 How We Calculate</button>
+            <button class="tab-button" onclick="showTab('team-goals')">🎯 Team Goals</button>
+            <button class="tab-button" onclick="showTab('individual')">👤 Individual AE Goals</button>
+            <button class="tab-button" onclick="showTab('risk')">🚦 Risk Assessment</button>
+        </div>
 
-                <div class="input-group">
-                    <label for="dealSize">Average Deal Size ($)</label>
-                    <input type="number" id="dealSize" value="50000" oninput="calculate()">
-                </div>
+        <!-- INPUTS TAB -->
+        <div id="inputs" class="tab-content active">
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-title">💰 What We Want to Achieve</div>
+                    
+                    <div class="input-group">
+                        <label for="arrGoal">How much money do we want to make this year? ($)</label>
+                        <input type="number" id="arrGoal" value="5000000" oninput="calculate()">
+                    </div>
 
-                <div class="input-group">
-                    <label for="dealCycle">Deal Cycle (months)</label>
-                    <input type="number" id="dealCycle" value="2" oninput="calculate()">
-                </div>
+                    <div class="simple-explanation">
+                        <strong>What this means:</strong> This is our big goal! If we want to make $5 million this year, we need to plan how to get there.
+                    </div>
 
-                <div class="input-group">
-                    <label for="aeHeadcount">AE Headcount</label>
-                    <input type="number" id="aeHeadcount" value="5" oninput="calculate()">
-                </div>
+                    <div class="input-group">
+                        <label for="dealSize">How much money does each customer pay us? ($)</label>
+                        <input type="number" id="dealSize" value="50000" oninput="calculate()">
+                    </div>
 
-                <div class="input-group">
-                    <label for="currentPipeline">Current Pipeline ($)</label>
-                    <input type="number" id="currentPipeline" value="2000000" oninput="calculate()">
-                </div>
+                    <div class="input-group">
+                        <label for="dealCycle">How many months does it take to close a deal?</label>
+                        <input type="number" id="dealCycle" value="2" oninput="calculate()">
+                    </div>
 
-                <div class="input-group">
-                    <label for="weightedPipeline">Weighted Pipeline ($)</label>
-                    <input type="number" id="weightedPipeline" value="800000" oninput="calculate()">
-                </div>
-            </div>
-
-            <!-- CONVERSION RATES -->
-            <div class="card">
-                <div class="card-title">🎯 Conversion Rates & Factors</div>
-                
-                <div class="input-group">
-                    <label for="mqlToSql">MQL → SQL (%)</label>
-                    <input type="number" id="mqlToSql" value="40" oninput="calculate()">
-                </div>
-
-                <div class="input-group">
-                    <label for="sqlToOpp">SQL → Opp (%)</label>
-                    <input type="number" id="sqlToOpp" value="40" oninput="calculate()">
-                </div>
-
-                <div class="input-group">
-                    <label for="oppToWon">Opp → Won (%)</label>
-                    <input type="number" id="oppToWon" value="25" oninput="calculate()">
-                </div>
-
-                <div class="input-group">
-                    <label for="slipRate">Slip Rate (%)</label>
-                    <input type="number" id="slipRate" value="30" oninput="calculate()">
-                </div>
-
-                <div class="input-group">
-                    <label for="leadsInput">Current Leads Input</label>
-                    <input type="number" id="leadsInput" value="100" oninput="calculate()">
-                </div>
-            </div>
-
-            <!-- KEY METRICS -->
-            <div class="card">
-                <div class="card-title">⚡ Performance Metrics</div>
-                
-                <div class="metric">
-                    <div class="metric-label">Pipeline Coverage</div>
-                    <div class="metric-value" id="pipelineCoverage">0%</div>
-                    <div class="coverage-visual">
-                        <div class="coverage-fill" id="coverageFill"></div>
+                    <div class="input-group">
+                        <label for="aeHeadcount">How many salespeople do we have?</label>
+                        <input type="number" id="aeHeadcount" value="5" oninput="calculate()">
                     </div>
                 </div>
 
-                <div class="metric">
-                    <div class="metric-label">Execution Forecast</div>
-                    <div class="metric-value" id="executionForecast">0%</div>
-                </div>
+                <div class="card">
+                    <div class="card-title">📊 Current Situation</div>
+                    
+                    <div class="input-group">
+                        <label for="currentPipeline">How much money is in our pipeline right now? ($)</label>
+                        <input type="number" id="currentPipeline" value="2000000" oninput="calculate()">
+                    </div>
 
-                <div class="metric">
-                    <div class="metric-label">Pipeline Gap</div>
-                    <div class="metric-value" id="pipelineGap">$0</div>
-                </div>
+                    <div class="simple-explanation">
+                        <strong>Pipeline = Potential Sales:</strong> These are customers who might buy from us, but haven't said "yes" yet.
+                    </div>
 
-                <div class="metric">
-                    <div class="metric-label">Deals Needed</div>
-                    <div class="metric-value" id="dealsNeeded">0</div>
-                </div>
+                    <div class="input-group">
+                        <label for="weightedPipeline">How much of that pipeline will probably close? ($)</label>
+                        <input type="number" id="weightedPipeline" value="800000" oninput="calculate()">
+                    </div>
 
-                <div class="metric">
-                    <div class="metric-label">Leads Gap</div>
-                    <div class="metric-value" id="leadsGap">0</div>
+                    <div class="input-group">
+                        <label for="leadsInput">How many new potential customers do we get each month?</label>
+                        <input type="number" id="leadsInput" value="100" oninput="calculate()">
+                    </div>
                 </div>
             </div>
 
-            <!-- RISK MATRIX -->
-            <div class="risk-matrix">
-                <div class="card-title">🚦 Risk Assessment Matrix</div>
-                <div class="risk-grid">
-                    <div class="risk-item">
-                        <div class="metric-label">Capacity Coverage</div>
-                        <div class="metric-value">
-                            <span id="capacityCoverage">0%</span>
-                            <span class="status-indicator" id="capacityStatus"></span>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-title">🎯 How Good Are We at Converting?</div>
+                    
+                    <div class="input-group">
+                        <label for="mqlToSql">Out of 100 leads, how many become real opportunities? (%)</label>
+                        <input type="number" id="mqlToSql" value="40" oninput="calculate()">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="sqlToOpp">Out of 100 opportunities, how many become real deals? (%)</label>
+                        <input type="number" id="sqlToOpp" value="40" oninput="calculate()">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="oppToWon">Out of 100 deals, how many do we actually win? (%)</label>
+                        <input type="number" id="oppToWon" value="25" oninput="calculate()">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="slipRate">How often do deals get delayed? (%)</label>
+                        <input type="number" id="slipRate" value="30" oninput="calculate()">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">📈 Quick Results</div>
+                    
+                    <div class="metric-display">
+                        <div class="metric-card">
+                            <div class="metric-label">Deals We Need</div>
+                            <div class="metric-value" id="quickDeals">0</div>
+                            <div class="metric-explanation">To hit our goal</div>
                         </div>
-                        <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Target: 300-400%</div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-label">Pipeline Health</div>
+                            <div class="metric-value" id="quickHealth">0%</div>
+                            <div class="metric-explanation">How we're doing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALCULATIONS TAB -->
+        <div id="calculations" class="tab-content">
+            <div class="explanation-box">
+                <div class="explanation-title">🤔 Why Do We Need These Calculations?</div>
+                <p>Think of this like planning a road trip. We need to know:</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Where we want to go (our revenue goal)</li>
+                    <li>How far we are now (current pipeline)</li>
+                    <li>How fast we can travel (our conversion rates)</li>
+                    <li>If we have enough gas (enough leads and deals)</li>
+                </ul>
+            </div>
+
+            <div class="breakdown-section">
+                <h3>📊 Pipeline Coverage - "Do We Have Enough Potential Sales?"</h3>
+                
+                <div class="explanation-box">
+                    <div class="explanation-title">🧮 The Math</div>
+                    <div class="formula">
+                        Pipeline Coverage = (Current Pipeline ÷ Revenue Goal) × 100
+                    </div>
+                    <div class="formula" id="pipelineCoverageCalc">
+                        Pipeline Coverage = ($2,000,000 ÷ $5,000,000) × 100 = 40%
+                    </div>
+                </div>
+
+                <div class="simple-explanation">
+                    <strong>What this means in simple words:</strong><br>
+                    We want to make $5 million, but we only have $2 million worth of potential customers. It's like wanting to buy a $50 toy but only having $20 in your piggy bank.
+                </div>
+
+                <div class="warning-explanation">
+                    <strong>Why 40% coverage is risky:</strong><br>
+                    • Most companies need 300-400% coverage (3-4 times their goal)<br>
+                    • Not all potential customers will actually buy<br>
+                    • Some deals will take longer than expected<br>
+                    • We need backup options!
+                </div>
+            </div>
+
+            <div class="breakdown-section">
+                <h3>🎯 Execution Forecast - "How Much Will We Actually Make?"</h3>
+                
+                <div class="explanation-box">
+                    <div class="explanation-title">🧮 The Math</div>
+                    <div class="formula">
+                        Execution Forecast = (Weighted Pipeline ÷ Revenue Goal) × 100
+                    </div>
+                    <div class="formula" id="executionForecastCalc">
+                        Execution Forecast = ($800,000 ÷ $5,000,000) × 100 = 16%
+                    </div>
+                </div>
+
+                <div class="danger-explanation">
+                    <strong>What 16% forecast means:</strong><br>
+                    We're only likely to make 16% of our goal with our current pipeline. That's like planning to bake 100 cookies but only having ingredients for 16 cookies!
+                </div>
+            </div>
+
+            <div class="breakdown-section">
+                <h3>🔄 Overall Conversion Rate - "How Good Are We at Turning Leads into Money?"</h3>
+                
+                <div class="explanation-box">
+                    <div class="explanation-title">🧮 The Math</div>
+                    <div class="formula">
+                        Overall Conversion = (MQL→SQL%) × (SQL→Opp%) × (Opp→Won%) ÷ 100 ÷ 100
+                    </div>
+                    <div class="formula" id="overallConversionCalc">
+                        Overall Conversion = (40% × 40% × 25%) ÷ 10,000 = 4%
+                    </div>
+                </div>
+
+                <div class="simple-explanation">
+                    <strong>What this means:</strong><br>
+                    Out of every 100 people who show interest in our product, only 4 actually become customers. It's like inviting 100 friends to your birthday party, but only 4 show up!
+                </div>
+            </div>
+
+            <div class="breakdown-section">
+                <h3>📝 Leads We Need - "How Many New People Need to Hear About Us?"</h3>
+                
+                <div class="explanation-box">
+                    <div class="explanation-title">🧮 The Math</div>
+                    <div class="formula">
+                        Deals Needed = Revenue Goal ÷ Average Deal Size
+                    </div>
+                    <div class="formula" id="dealsNeededCalc">
+                        Deals Needed = $5,000,000 ÷ $50,000 = 100 deals
+                    </div>
+                    <div class="formula">
+                        Leads Needed = Deals Needed ÷ Overall Conversion Rate
+                    </div>
+                    <div class="formula" id="leadsNeededCalc">
+                        Leads Needed = 100 ÷ 4% = 2,500 leads
+                    </div>
+                </div>
+
+                <div class="warning-explanation">
+                    <strong>What this means:</strong><br>
+                    We need 2,500 people to hear about us this year to make our goal. That's about 208 new people every month!
+                </div>
+            </div>
+        </div>
+
+        <!-- TEAM GOALS TAB -->
+        <div id="team-goals" class="tab-content">
+            <div class="breakdown-section">
+                <h3>🏢 Company-Wide Goals</h3>
+                
+                <div class="metric-display">
+                    <div class="metric-card">
+                        <div class="metric-label">Revenue Goal</div>
+                        <div class="metric-value" id="teamRevenue">$5.0M</div>
+                        <div class="metric-explanation">What we want to achieve</div>
                     </div>
                     
-                    <div class="risk-item">
-                        <div class="metric-label">Execution Health</div>
-                        <div class="metric-value">
-                            <span id="executionHealth">0%</span>
-                            <span class="status-indicator" id="executionStatus"></span>
-                        </div>
-                        <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Target: >80%</div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Deals Needed</div>
+                        <div class="metric-value" id="teamDeals">100</div>
+                        <div class="metric-explanation">Number of customers to win</div>
                     </div>
-
-                    <div class="risk-item">
-                        <div class="metric-label">Lead Velocity</div>
-                        <div class="metric-value">
-                            <span id="leadVelocity">0</span>
-                            <span class="status-indicator" id="velocityStatus"></span>
-                        </div>
-                        <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Monthly leads needed</div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-label">Monthly Leads Target</div>
+                        <div class="metric-value" id="teamLeads">208</div>
+                        <div class="metric-explanation">New prospects each month</div>
                     </div>
-
-                    <div class="risk-item">
-                        <div class="metric-label">AE Productivity</div>
-                        <div class="metric-value">
-                            <span id="aeProductivity">0</span>
-                            <span class="status-indicator" id="productivityStatus"></span>
-                        </div>
-                        <div style="font-size: 0.9em; color: #666; margin-top: 5px;">Deals per AE per month</div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-label">Pipeline Needed</div>
+                        <div class="metric-value" id="teamPipeline">$15.0M</div>
+                        <div class="metric-explanation">Total opportunities needed</div>
                     </div>
                 </div>
             </div>
 
-            <!-- RECOMMENDATIONS -->
-            <div class="recommendations">
-                <div class="card-title">💡 Strategic Recommendations</div>
-                <div class="rec-grid">
-                    <div class="rec-card">
-                        <div class="rec-title">📈 Marketing Team</div>
-                        <div id="marketingRec">Increase lead generation by X%</div>
-                        <div class="big-number" id="leadsNeeded">0</div>
-                        <div>Additional monthly leads required</div>
+            <div class="breakdown-section">
+                <h3>👥 Marketing Team Goals</h3>
+                <div class="explanation-box">
+                    <div class="explanation-title">🎯 What Marketing Needs to Do</div>
+                    <p><strong>Monthly Lead Target:</strong> <span id="marketingLeadsTarget">208</span> qualified leads</p>
+                    <p><strong>Why this number:</strong> Based on our conversion rates, we need this many leads to generate enough deals.</p>
+                    
+                    <div class="simple-explanation">
+                        <strong>Marketing's Mission:</strong><br>
+                        Find 208 new people every month who might want to buy our product. These should be good quality leads - people who actually need what we sell!
+                    </div>
+                </div>
+            </div>
+
+            <div class="breakdown-section">
+                <h3>📞 Sales Team Goals</h3>
+                <div class="explanation-box">
+                    <div class="explanation-title">🎯 What Sales Needs to Do</div>
+                    
+                    <div class="metric-display">
+                        <div class="metric-card">
+                            <div class="metric-label">Deals Per Month</div>
+                            <div class="metric-value" id="salesMonthlyDeals">8.3</div>
+                            <div class="metric-explanation">Total team target</div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-label">Conversion Rate Target</div>
+                            <div class="metric-value" id="salesConversion">4%</div>
+                            <div class="metric-explanation">Leads to deals</div>
+                        </div>
                     </div>
 
-                    <div class="rec-card">
-                        <div class="rec-title">🎯 Sales Team</div>
-                        <div id="salesRec">Focus on conversion optimization</div>
-                        <div class="big-number" id="conversionTarget">0%</div>
-                        <div>Target conversion rate needed</div>
+                    <div class="simple-explanation">
+                        <strong>Sales Team's Mission:</strong><br>
+                        Turn leads into customers! The team needs to close about 8 deals every month. Focus on improving conversion rates at each stage.
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="rec-card">
-                        <div class="rec-title">⚙️ RevOps Team</div>
-                        <div id="revopsRec">Implement slip rate tracking</div>
-                        <div class="big-number" id="slipImpact">0%</div>
-                        <div>Current slip rate impact</div>
-                    </div>
+        <!-- INDIVIDUAL AE TAB -->
+        <div id="individual" class="tab-content">
+            <div class="explanation-box">
+                <div class="explanation-title">👤 Individual Goals Explained</div>
+                <p>Here's what each salesperson needs to achieve to hit our company goal. Think of it like a sports team - everyone has their position and targets!</p>
+            </div>
 
-                    <div class="rec-card">
-                        <div class="rec-title">👥 Leadership</div>
-                        <div id="leadershipRec">Resource allocation priority</div>
-                        <div class="big-number" id="riskLevel">HIGH</div>
-                        <div>Overall risk assessment</div>
+            <div class="ae-grid" id="aeGrid">
+                <!-- AE cards will be generated here -->
+            </div>
+
+            <div class="breakdown-section">
+                <h3>📚 How We Calculated Your Individual Goals</h3>
+                
+                <div class="explanation-box">
+                    <div class="explanation-title">🧮 The Math Behind Your Numbers</div>
+                    
+                    <div class="formula">
+                        Deals Per AE Per Year = Total Deals Needed ÷ Number of AEs
                     </div>
+                    <div class="formula" id="dealsPerAECalc">
+                        Deals Per AE Per Year = 100 ÷ 5 = 20 deals each
+                    </div>
+                    
+                    <div class="formula">
+                        Monthly Deal Target = Annual Target ÷ 12 months
+                    </div>
+                    <div class="formula" id="monthlyTargetCalc">
+                        Monthly Deal Target = 20 ÷ 12 = 1.7 deals per month
+                    </div>
+                </div>
+
+                <div class="simple-explanation">
+                    <strong>What this means for you:</strong><br>
+                    • You need to close about 2 deals every month<br>
+                    • That's one deal every 2 weeks<br>
+                    • Each deal should be worth about $50,000<br>
+                    • You'll make $1 million in revenue per year for the company!
+                </div>
+
+                <div class="warning-explanation">
+                    <strong>Tips for Success:</strong><br>
+                    • Work on 3-4 deals at once (pipeline coverage)<br>
+                    • Follow up consistently - deals take time<br>
+                    • Focus on qualified prospects<br>
+                    • Ask for help if you're falling behind
+                </div>
+            </div>
+        </div>
+
+        <!-- RISK ASSESSMENT TAB -->
+        <div id="risk" class="tab-content">
+            <div class="explanation-box">
+                <div class="explanation-title">🚦 Traffic Light System</div>
+                <p>We use colors like traffic lights to show how we're doing:</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li><strong>🟢 Green:</strong> Everything looks good! Keep going!</li>
+                    <li><strong>🟡 Yellow:</strong> Be careful - we need to pay attention</li>
+                    <li><strong>🔴 Red:</strong> Stop! We need to fix this now</li>
+                </ul>
+            </div>
+
+            <div class="breakdown-section">
+                <h3>📊 Current Risk Assessment</h3>
+                
+                <div class="metric-display">
+                    <div class="metric-card">
+                        <div class="metric-label">Pipeline Coverage</div>
+                        <div class="metric-value">
+                            <span id="riskPipelineCoverage">40%</span>
+                            <span class="status-indicator" id="riskPipelineStatus"></span>
+                        </div>
+                        <div class="metric-explanation">Need: 300%+ for green</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-label">Execution Forecast</div>
+                        <div class="metric-value">
+                            <span id="riskExecution">16%</span>
+                            <span class="status-indicator" id="riskExecutionStatus"></span>
+                        </div>
+                        <div class="metric-explanation">Need: 80%+ for green</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-label">Lead Generation</div>
+                        <div class="metric-value">
+                            <span id="riskLeadGen">100/mo</span>
+                            <span class="status-indicator" id="riskLeadStatus"></span>
+                        </div>
+                        <div class="metric-explanation">Need: 208/mo for green</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-label">Overall Risk Level</div>
+                        <div class="metric-value">
+                            <span id="riskOverall">HIGH</span>
+                            <span class="status-indicator" id="riskOverallStatus"></span>
+                        </div>
+                        <div class="metric-explanation">Based on all factors</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="breakdown-section" id="riskExplanations">
+                <!-- Risk explanations will be generated here -->
+            </div>
+
+            <div class="breakdown-section">
+                <h3>💡 What Should We Do?</h3>
+                
+                <div id="actionPlan">
+                    <!-- Action items will be generated here -->
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        let currentCalculations = {};
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
         function calculate() {
             // Get input values
             const arrGoal = parseFloat(document.getElementById('arrGoal').value) || 0;
@@ -415,184 +738,324 @@
             // Calculate key metrics
             const dealsNeeded = Math.ceil(arrGoal / dealSize);
             const pipelineNeeded = arrGoal * 3; // 3x coverage target
-            const pipelineGap = Math.max(0, pipelineNeeded - currentPipeline);
             const pipelineCoverage = (currentPipeline / arrGoal) * 100;
             const executionForecast = (weightedPipeline / arrGoal) * 100;
             
             // Conversion calculations
             const overallConversion = (mqlToSql/100) * (sqlToOpp/100) * (oppToWon/100);
             const leadsNeeded = Math.ceil(dealsNeeded / overallConversion);
-            const leadsGap = Math.max(0, leadsNeeded - leadsInput);
             const monthlyLeadsNeeded = Math.ceil(leadsNeeded / 12);
             
-            // AE productivity
-            const dealsPerAE = dealsNeeded / aeHeadcount;
-            const dealsPerAEPerMonth = dealsPerAE / (12 / dealCycle);
+            // AE calculations
+            const dealsPerAE = Math.ceil(dealsNeeded / aeHeadcount);
+            const dealsPerAEPerMonth = dealsPerAE / 12;
+            const revenuePerAE = arrGoal / aeHeadcount;
             
-            // Risk assessments
-            const capacityCoverage = pipelineCoverage;
-            const executionHealth = executionForecast;
+            // Store calculations for use in other functions
+            currentCalculations = {
+                arrGoal, dealSize, dealCycle, aeHeadcount, currentPipeline, weightedPipeline,
+                mqlToSql, sqlToOpp, oppToWon, slipRate, leadsInput, dealsNeeded, pipelineNeeded,
+                pipelineCoverage, executionForecast, overallConversion, leadsNeeded, monthlyLeadsNeeded,
+                dealsPerAE, dealsPerAEPerMonth, revenuePerAE
+            };
+
+            // Update quick results
+            document.getElementById('quickDeals').textContent = dealsNeeded;
+            document.getElementById('quickHealth').textContent = pipelineCoverage.toFixed(1) + '%';
             
-            // Update displays
-            document.getElementById('pipelineCoverage').textContent = pipelineCoverage.toFixed(1) + '%';
-            document.getElementById('executionForecast').textContent = executionForecast.toFixed(1) + '%';
-            document.getElementById('pipelineGap').textContent = '$' + (pipelineGap/1000000).toFixed(1) + 'M';
-            document.getElementById('dealsNeeded').textContent = dealsNeeded;
-            document.getElementById('leadsGap').textContent = leadsGap.toLocaleString();
+            // Update calculation formulas
+            updateCalculationFormulas();
             
-            // Coverage visual
-            const coverageFill = document.getElementById('coverageFill');
-            const coverageWidth = Math.min(100, pipelineCoverage / 3); // Scale to 300% = 100% width
-            coverageFill.style.width = coverageWidth + '%';
+            // Update team goals
+            updateTeamGoals();
             
-            // Risk matrix updates
-            document.getElementById('capacityCoverage').textContent = capacityCoverage.toFixed(1) + '%';
-            document.getElementById('executionHealth').textContent = executionHealth.toFixed(1) + '%';
-            document.getElementById('leadVelocity').textContent = monthlyLeadsNeeded;
-            document.getElementById('aeProductivity').textContent = dealsPerAEPerMonth.toFixed(1);
+            // Update individual AE cards
+            updateAECards();
             
-            // Status indicators
-            updateStatus('capacityStatus', capacityCoverage, 300, 200);
-            updateStatus('executionStatus', executionHealth, 80, 60);
-            updateStatus('velocityStatus', monthlyLeadsNeeded, 50, 100, true); // Reverse scale
-            updateStatus('productivityStatus', dealsPerAEPerMonth, 3, 2);
-            
-            // Recommendations
-            document.getElementById('leadsNeeded').textContent = monthlyLeadsNeeded;
-            document.getElementById('conversionTarget').textContent = (overallConversion * 100).toFixed(1) + '%';
-            document.getElementById('slipImpact').textContent = slipRate + '%';
-            
-            // Overall risk level
-            const riskScore = (capacityCoverage < 200 ? 1 : 0) + 
-                            (executionHealth < 60 ? 1 : 0) + 
-                            (monthlyLeadsNeeded > 100 ? 1 : 0);
-            
-            const riskLevel = riskScore >= 2 ? 'HIGH' : riskScore >= 1 ? 'MED' : 'LOW';
-            document.getElementById('riskLevel').textContent = riskLevel;
-            document.getElementById('riskLevel').style.color = riskScore >= 2 ? '#e74c3c' : 
-                                                             riskScore >= 1 ? '#f39c12' : '#27ae60';
-            
-            // Dynamic recommendations
-            updateRecommendations(pipelineCoverage, executionHealth, leadsGap, slipRate);
+            // Update risk assessment
+            updateRiskAssessment();
         }
 
-        function updateStatus(elementId, value, greenThreshold, yellowThreshold, reverse = false) {
-            const element = document.getElementById(elementId);
-            let status;
+        function updateCalculationFormulas() {
+            const c = currentCalculations;
             
-            if (reverse) {
-                status = value <= greenThreshold ? 'green' : 
-                        value <= yellowThreshold ? 'yellow' : 'red';
-            } else {
-                status = value >= greenThreshold ? 'green' : 
-                        value >= yellowThreshold ? 'yellow' : 'red';
-            }
+            // Pipeline coverage calculation
+            document.getElementById('pipelineCoverageCalc').textContent = 
+                `Pipeline Coverage = (${(c.currentPipeline/1000000).toFixed(1)}M ÷ ${(c.arrGoal/1000000).toFixed(1)}M) × 100 = ${c.pipelineCoverage.toFixed(1)}%`;
             
-            element.className = `status-indicator status-${status}`;
+            // Execution forecast calculation
+            document.getElementById('executionForecastCalc').textContent = 
+                `Execution Forecast = (${(c.weightedPipeline/1000000).toFixed(1)}M ÷ ${(c.arrGoal/1000000).toFixed(1)}M) × 100 = ${c.executionForecast.toFixed(1)}%`;
+            
+            // Overall conversion calculation
+            document.getElementById('overallConversionCalc').textContent = 
+                `Overall Conversion = (${c.mqlToSql}% × ${c.sqlToOpp}% × ${c.oppToWon}%) ÷ 10,000 = ${(c.overallConversion * 100).toFixed(1)}%`;
+            
+            // Deals needed calculation
+            document.getElementById('dealsNeededCalc').textContent = 
+                `Deals Needed = ${(c.arrGoal/1000000).toFixed(1)}M ÷ ${(c.dealSize/1000).toFixed(0)}K = ${c.dealsNeeded} deals`;
+            
+            // Leads needed calculation
+            document.getElementById('leadsNeededCalc').textContent = 
+                `Leads Needed = ${c.dealsNeeded} ÷ ${(c.overallConversion * 100).toFixed(1)}% = ${c.leadsNeeded} leads`;
+            
+            // AE calculations
+            document.getElementById('dealsPerAECalc').textContent = 
+                `Deals Per AE Per Year = ${c.dealsNeeded} ÷ ${c.aeHeadcount} = ${c.dealsPerAE} deals each`;
+            
+            document.getElementById('monthlyTargetCalc').textContent = 
+                `Monthly Deal Target = ${c.dealsPerAE} ÷ 12 = ${c.dealsPerAEPerMonth.toFixed(1)} deals per month`;
         }
 
-        function updateRecommendations(coverage, execution, leadsGap, slip) {
-            const marketingRec = document.getElementById('marketingRec');
-            const salesRec = document.getElementById('salesRec');
-            const revopsRec = document.getElementById('revopsRec');
-            const leadershipRec = document.getElementById('leadershipRec');
+        function updateTeamGoals() {
+            const c = currentCalculations;
             
-            if (leadsGap > 500) {
-                marketingRec.textContent = 'URGENT: Scale lead generation programs immediately';
-            } else if (leadsGap > 100) {
-                marketingRec.textContent = 'Increase marketing qualified leads by 30-50%';
-            } else {
-                marketingRec.textContent = 'Optimize lead quality and attribution';
-            }
+            document.getElementById('teamRevenue').textContent = `${(c.arrGoal/1000000).toFixed(1)}M`;
+            document.getElementById('teamDeals').textContent = c.dealsNeeded;
+            document.getElementById('teamLeads').textContent = c.monthlyLeadsNeeded;
+            document.getElementById('teamPipeline').textContent = `${(c.pipelineNeeded/1000000).toFixed(1)}M`;
             
-            if (execution < 50) {
-                salesRec.textContent = 'CRITICAL: Review sales process and enablement';
-            } else if (execution < 70) {
-                salesRec.textContent = 'Focus on deal progression and closing skills';
-            } else {
-                salesRec.textContent = 'Maintain current performance and optimize';
-            }
+            document.getElementById('marketingLeadsTarget').textContent = c.monthlyLeadsNeeded;
+            document.getElementById('salesMonthlyDeals').textContent = (c.dealsNeeded/12).toFixed(1);
+            document.getElementById('salesConversion').textContent = `${(c.overallConversion * 100).toFixed(1)}%`;
+        }
+
+        function updateAECards() {
+            const c = currentCalculations;
+            const aeGrid = document.getElementById('aeGrid');
             
-            if (slip > 25) {
-                revopsRec.textContent = 'Implement slip rate tracking and forecasting';
-            } else if (slip > 15) {
-                revopsRec.textContent = 'Monitor deal progression more closely';
-            } else {
-                revopsRec.textContent = 'Current process management is effective';
-            }
+            // Clear existing cards
+            aeGrid.innerHTML = '';
             
-            if (coverage < 200 && execution < 60) {
-                leadershipRec.textContent = 'URGENT: Resource reallocation needed';
-            } else if (coverage < 250) {
-                leadershipRec.textContent = 'Consider hiring additional AEs/SDRs';
-            } else {
-                leadershipRec.textContent = 'Current trajectory is sustainable';
+            // Generate individual AE cards
+            for (let i = 1; i <= c.aeHeadcount; i++) {
+                const aeCard = document.createElement('div');
+                aeCard.className = 'ae-card';
+                
+                const leadsPerAE = Math.ceil(c.monthlyLeadsNeeded / c.aeHeadcount);
+                const pipelinePerAE = c.pipelineNeeded / c.aeHeadcount;
+                
+                aeCard.innerHTML = `
+                    <div class="ae-name">🎯 Account Executive #${i}</div>
+                    
+                    <div class="ae-metric">
+                        <span>Annual Revenue Goal:</span>
+                        <span><strong>${(c.revenuePerAE/1000000).toFixed(1)}M</strong></span>
+                    </div>
+                    
+                    <div class="ae-metric">
+                        <span>Deals Needed (Year):</span>
+                        <span><strong>${c.dealsPerAE} deals</strong></span>
+                    </div>
+                    
+                    <div class="ae-metric">
+                        <span>Deals Needed (Month):</span>
+                        <span><strong>${c.dealsPerAEPerMonth.toFixed(1)} deals</strong></span>
+                    </div>
+                    
+                    <div class="ae-metric">
+                        <span>Pipeline Needed:</span>
+                        <span><strong>${(pipelinePerAE/1000000).toFixed(1)}M</strong></span>
+                    </div>
+                    
+                    <div class="ae-metric">
+                        <span>Leads Per Month:</span>
+                        <span><strong>${leadsPerAE} leads</strong></span>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <div style="font-weight: 600; margin-bottom: 8px;">🎯 Your Simple Goals:</div>
+                        <div style="font-size: 0.9em;">
+                            • Close ${Math.ceil(c.dealsPerAEPerMonth)} deal(s) every month<br>
+                            • Keep ${(pipelinePerAE/1000000).toFixed(1)}M in your pipeline<br>
+                            • Work ${leadsPerAE} new leads monthly<br>
+                            • Average ${(c.dealSize/1000).toFixed(0)}K per deal
+                        </div>
+                    </div>
+                `;
+                
+                aeGrid.appendChild(aeCard);
             }
         }
 
-        // Initial calculation
+        function updateRiskAssessment() {
+            const c = currentCalculations;
+            
+            // Update risk metrics
+            document.getElementById('riskPipelineCoverage').textContent = `${c.pipelineCoverage.toFixed(1)}%`;
+            document.getElementById('riskExecution').textContent = `${c.executionForecast.toFixed(1)}%`;
+            document.getElementById('riskLeadGen').textContent = `${c.leadsInput}/mo`;
+            
+            // Calculate risk levels and update status indicators
+            const pipelineRisk = c.pipelineCoverage >= 300 ? 'green' : c.pipelineCoverage >= 200 ? 'yellow' : 'red';
+            const executionRisk = c.executionForecast >= 80 ? 'green' : c.executionForecast >= 60 ? 'yellow' : 'red';
+            const leadRisk = c.leadsInput >= c.monthlyLeadsNeeded ? 'green' : 
+                           c.leadsInput >= c.monthlyLeadsNeeded * 0.8 ? 'yellow' : 'red';
+            
+            document.getElementById('riskPipelineStatus').className = `status-indicator status-${pipelineRisk}`;
+            document.getElementById('riskExecutionStatus').className = `status-indicator status-${executionRisk}`;
+            document.getElementById('riskLeadStatus').className = `status-indicator status-${leadRisk}`;
+            
+            // Calculate overall risk
+            const riskScore = (pipelineRisk === 'red' ? 2 : pipelineRisk === 'yellow' ? 1 : 0) +
+                            (executionRisk === 'red' ? 2 : executionRisk === 'yellow' ? 1 : 0) +
+                            (leadRisk === 'red' ? 2 : leadRisk === 'yellow' ? 1 : 0);
+            
+            const overallRisk = riskScore >= 4 ? 'HIGH' : riskScore >= 2 ? 'MEDIUM' : 'LOW';
+            const overallRiskColor = riskScore >= 4 ? 'red' : riskScore >= 2 ? 'yellow' : 'green';
+            
+            document.getElementById('riskOverall').textContent = overallRisk;
+            document.getElementById('riskOverallStatus').className = `status-indicator status-${overallRiskColor}`;
+            
+            // Update risk explanations
+            updateRiskExplanations(pipelineRisk, executionRisk, leadRisk, overallRisk);
+            
+            // Update action plan
+            updateActionPlan(pipelineRisk, executionRisk, leadRisk);
+        }
+
+        function updateRiskExplanations(pipelineRisk, executionRisk, leadRisk, overallRisk) {
+            const c = currentCalculations;
+            const explanationsDiv = document.getElementById('riskExplanations');
+            
+            let explanations = '<h3>🔍 What These Colors Mean</h3>';
+            
+            // Pipeline Coverage Explanation
+            if (pipelineRisk === 'red') {
+                explanations += `
+                    <div class="danger-explanation">
+                        <strong>🔴 Pipeline Coverage is RED (${c.pipelineCoverage.toFixed(1)}%)</strong><br>
+                        This is like having only ${c.pipelineCoverage.toFixed(0)} when you need $300 to buy something important. We need way more potential customers in our pipeline!<br>
+                        <strong>Why this is dangerous:</strong> Most deals don't close, so we need 3-4 times more pipeline than our goal.
+                    </div>
+                `;
+            } else if (pipelineRisk === 'yellow') {
+                explanations += `
+                    <div class="warning-explanation">
+                        <strong>🟡 Pipeline Coverage is YELLOW (${c.pipelineCoverage.toFixed(1)}%)</strong><br>
+                        We're getting better, but still need more backup options. It's like having a backup plan, but maybe needing a backup for the backup!
+                    </div>
+                `;
+            } else {
+                explanations += `
+                    <div class="simple-explanation">
+                        <strong>🟢 Pipeline Coverage is GREEN (${c.pipelineCoverage.toFixed(1)}%)</strong><br>
+                        Great job! We have plenty of potential customers in our pipeline. This gives us confidence we can hit our goals.
+                    </div>
+                `;
+            }
+            
+            // Execution Forecast Explanation
+            if (executionRisk === 'red') {
+                explanations += `
+                    <div class="danger-explanation">
+                        <strong>🔴 Execution Forecast is RED (${c.executionForecast.toFixed(1)}%)</strong><br>
+                        We're only likely to achieve ${c.executionForecast.toFixed(1)}% of our goal with current deals. It's like studying for a test but only knowing ${c.executionForecast.toFixed(1)}% of the answers!<br>
+                        <strong>We need to:</strong> Get better at closing deals or find more high-quality opportunities.
+                    </div>
+                `;
+            } else if (executionRisk === 'yellow') {
+                explanations += `
+                    <div class="warning-explanation">
+                        <strong>🟡 Execution Forecast is YELLOW (${c.executionForecast.toFixed(1)}%)</strong><br>
+                        We're on track for ${c.executionForecast.toFixed(1)}% of our goal. Not bad, but we can do better! Like getting a B grade when we want an A.
+                    </div>
+                `;
+            } else {
+                explanations += `
+                    <div class="simple-explanation">
+                        <strong>🟢 Execution Forecast is GREEN (${c.executionForecast.toFixed(1)}%)</strong><br>
+                        Excellent! We're forecasting ${c.executionForecast.toFixed(1)}% of our goal achievement. We're on track to succeed!
+                    </div>
+                `;
+            }
+            
+            // Lead Generation Explanation
+            if (leadRisk === 'red') {
+                explanations += `
+                    <div class="danger-explanation">
+                        <strong>🔴 Lead Generation is RED (${c.leadsInput} vs ${c.monthlyLeadsNeeded} needed)</strong><br>
+                        We're only getting ${c.leadsInput} leads per month, but need ${c.monthlyLeadsNeeded}! It's like a restaurant that needs 100 customers per day but only 50 are coming in.<br>
+                        <strong>The gap:</strong> We need ${c.monthlyLeadsNeeded - c.leadsInput} more leads every month.
+                    </div>
+                `;
+            } else if (leadRisk === 'yellow') {
+                explanations += `
+                    <div class="warning-explanation">
+                        <strong>🟡 Lead Generation is YELLOW (${c.leadsInput} vs ${c.monthlyLeadsNeeded} needed)</strong><br>
+                        We're close to our lead target but could use a bit more. Almost there!
+                    </div>
+                `;
+            } else {
+                explanations += `
+                    <div class="simple-explanation">
+                        <strong>🟢 Lead Generation is GREEN (${c.leadsInput} vs ${c.monthlyLeadsNeeded} needed)</strong><br>
+                        Perfect! We're generating enough leads to support our goals.
+                    </div>
+                `;
+            }
+            
+            explanationsDiv.innerHTML = explanations;
+        }
+
+        function updateActionPlan(pipelineRisk, executionRisk, leadRisk) {
+            const c = currentCalculations;
+            const actionPlanDiv = document.getElementById('actionPlan');
+            
+            let actionItems = [];
+            
+            if (pipelineRisk === 'red') {
+                actionItems.push({
+                    priority: 'URGENT',
+                    action: `Add ${((c.pipelineNeeded - c.currentPipeline)/1000000).toFixed(1)}M to pipeline`,
+                    why: 'We don\'t have enough potential deals to hit our goal',
+                    how: 'Focus on lead generation, prospecting, and qualification'
+                });
+            }
+            
+            if (executionRisk === 'red') {
+                actionItems.push({
+                    priority: 'URGENT',
+                    action: 'Improve deal closing and conversion rates',
+                    why: `Current forecast is only ${c.executionForecast.toFixed(1)}% of goal`,
+                    how: 'Sales training, better qualification, faster follow-up'
+                });
+            }
+            
+            if (leadRisk === 'red') {
+                actionItems.push({
+                    priority: 'HIGH',
+                    action: `Generate ${c.monthlyLeadsNeeded - c.leadsInput} more leads per month`,
+                    why: 'Not enough prospects to support our sales goals',
+                    how: 'Increase marketing spend, improve lead quality, expand channels'
+                });
+            }
+            
+            if (actionItems.length === 0) {
+                actionPlanDiv.innerHTML = `
+                    <div class="simple-explanation">
+                        <strong>🎉 Great job!</strong><br>
+                        All your metrics are looking good. Keep doing what you're doing and monitor regularly.
+                    </div>
+                `;
+            } else {
+                let actionHTML = '';
+                actionItems.forEach((item, index) => {
+                    const priorityClass = item.priority === 'URGENT' ? 'danger-explanation' : 'warning-explanation';
+                    actionHTML += `
+                        <div class="${priorityClass}">
+                            <strong>${item.priority}: ${item.action}</strong><br>
+                            <strong>Why:</strong> ${item.why}<br>
+                            <strong>How:</strong> ${item.how}
+                        </div>
+                    `;
+                });
+                actionPlanDiv.innerHTML = actionHTML;
+            }
+        }
+
+        // Initial calculation when page loads
         calculate();
-
-        function shareCalculator() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Pipeline Coverage Calculator',
-                    text: 'Calculate pipeline health and forecast performance for Series A startups',
-                    url: window.location.href
-                });
-            } else {
-                // Fallback: copy URL to clipboard
-                navigator.clipboard.writeText(window.location.href).then(() => {
-                    alert('Calculator URL copied to clipboard!');
-                });
-            }
-        }
-
-        function downloadResults() {
-            const results = generateReport();
-            const blob = new Blob([results], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'pipeline-analysis-report.txt';
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-
-        function generateReport() {
-            const arrGoal = parseFloat(document.getElementById('arrGoal').value) || 0;
-            const currentPipeline = parseFloat(document.getElementById('currentPipeline').value) || 0;
-            const weightedPipeline = parseFloat(document.getElementById('weightedPipeline').value) || 0;
-            
-            const pipelineCoverage = (currentPipeline / arrGoal) * 100;
-            const executionForecast = (weightedPipeline / arrGoal) * 100;
-            
-            return `PIPELINE COVERAGE ANALYSIS REPORT
-=====================================
-
-EXECUTIVE SUMMARY
------------------
-ARR Goal: ${(arrGoal/1000000).toFixed(1)}M
-Current Pipeline: ${(currentPipeline/1000000).toFixed(1)}M
-Pipeline Coverage: ${pipelineCoverage.toFixed(1)}%
-Execution Forecast: ${executionForecast.toFixed(1)}%
-
-RISK ASSESSMENT
----------------
-Overall Risk Level: ${pipelineCoverage < 200 ? 'HIGH' : pipelineCoverage < 300 ? 'MEDIUM' : 'LOW'}
-Pipeline Health: ${pipelineCoverage < 200 ? 'CRITICAL' : pipelineCoverage < 300 ? 'NEEDS ATTENTION' : 'HEALTHY'}
-
-KEY RECOMMENDATIONS
--------------------
-${pipelineCoverage < 200 ? '• URGENT: Increase pipeline by ' + ((arrGoal * 3 - currentPipeline)/1000000).toFixed(1) + 'M' : ''}
-${executionForecast < 60 ? '• Focus on improving conversion rates and deal velocity' : ''}
-• Monitor slip rates and forecast accuracy
-• Align marketing and sales on lead requirements
-
-Generated on: ${new Date().toLocaleDateString()}
-Tool: Pipeline Coverage Calculator
-`;
-        }
     </script>
 </body>
 </html>
